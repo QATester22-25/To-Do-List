@@ -15,7 +15,7 @@ const Todo = () => {
       setError("Please add task first!");
       return
     }
-    setError("");
+    
     
     const newTodo = {
       id: Date.now(),
@@ -23,7 +23,7 @@ const Todo = () => {
       isComplete: false
     }
     setTodoList([...todoList, newTodo]) 
-    inputRef.current.value = ""
+     inputRef.current.value = ""
   }
 
   const deleteTodo = (id) => {
@@ -47,7 +47,7 @@ const Todo = () => {
 
       <div className='flex items-center my-7 bg-gray-200 rounded-full'>
         <input ref={inputRef} onFocus={()=>setError("")} className='bg-transparent border-0 outline-none flex-1 h-14 pl-6 pr-2 placeholder:text-slate-600' type="text" placeholder='Add your task' />
-        <button onClick={add} className='border-none rounded-full bg-orange-600 w-32 h-14 text-white text-lg font-medium hover:bg-orange-700 cursor-pointer'>Add Task</button>
+        <button onClick={add} className='border-none rounded-full bg-orange-600 w-32 h-14 text-white text-lg font-medium hover:bg-orange-700 cursor-pointer'>Add Task +</button>
       </div>
       <div><p className='text-red-600 ml-4 font-sans-serif'>{error}</p></div>
       
