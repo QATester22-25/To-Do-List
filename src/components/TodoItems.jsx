@@ -1,7 +1,7 @@
 import React from 'react'
-import tick from '.././assets/tick.png'
-import untick from '.././assets/untick.png'
-import delete_icon from '.././assets/delete.png'
+import tick from '../../public/tick.png'
+import untick from '../../public/untick.png'
+import delete_icon from '../../public/delete.png'
 
 const TodoItems = ({ text,id,isComplete,deleteTodo,toggle}) => {
   return (
