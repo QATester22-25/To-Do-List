@@ -4,7 +4,7 @@ import TodoItems from './TodoItems'
 
 const Todo = () => {
 
-  const [todoList, setTodoList] = useState([])
+  const [todoList, setTodoList] = useState(localStorage.getItem("todos") ? JSON.parse(localStorage.getItem('todos')): []);
   const [error, setError] = useState("");
 
   const inputRef = useRef()
@@ -12,7 +12,7 @@ const Todo = () => {
   const add = () => {
     const inputText = inputRef.current.value.trim();
     if (inputText === "") {
-      setError("Please add task first!");
+      setError("Please write a task first!");
       return
     }
     
@@ -34,7 +34,7 @@ const Todo = () => {
   }
 
   useEffect(() => {
-    console.log(todoList)
+    localStorage.setItem("todos",JSON.stringify(todoList))
   },[todoList])
 
   const toggle = (id) => {
@@ -62,7 +62,7 @@ const Todo = () => {
 
       <div className='flex items-center my-7 bg-gray-200 rounded-full'>
         <input ref={inputRef} onFocus={()=>setError("")} className='bg-transparent border-0 outline-none flex-1 h-14 pl-6 pr-2 placeholder:text-slate-600' type="text" placeholder='Add your task' />
-        <button onClick={add} className='border-none rounded-full bg-orange-600 w-32 h-14 text-white text-lg font-medium hover:bg-orange-700 cursor-pointer'>Add Task +</button>
+        <button onClick={add} className='border-none rounded-full bg-green-600 w-32 h-14 text-white text-lg font-medium hover:bg-green-700 cursor-pointer'>Add Task +</button>
       </div>
       <div><p className='text-red-600 ml-4 font-sans-serif'>{error}</p></div>
       
