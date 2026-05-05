@@ -3,14 +3,17 @@ import userEvent from "@testing-library/user-event";
 import App from "../App";
 import { expect, test } from "vitest";
 
-test("prevents empty todo from being added", async () => {
+test("shows error msg when adding empty todo", async () => {
   render(<App />);
 
-  const input = screen.getByPlaceholderText(/add todo/i);
-  const button = screen.getByText(/add/i);
+  const input = screen.getByPlaceholderText(/add your task/i);
+  const button = screen.getByText(/add task/i);
 
   await userEvent.type(input, "   ");
   await userEvent.click(button);
 
-  expect(screen.queryByText("")).not.toBeInTheDocument();
+ expect(
+  await screen.findByText("Please write a task first!")
+  ).toBeInTheDocument();
+  
 });
