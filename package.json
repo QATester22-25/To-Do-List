@@ -9,6 +9,7 @@
     "build": "vite build",
     "test": "vitest --run",
     "predeploy": "npm run build",
+    "coverage": "vitest run --coverage",
     "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview"
