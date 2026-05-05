@@ -10,7 +10,7 @@ const TodoItems = ({ text,id,isComplete,deleteTodo,toggle}) => {
         <img className='w-7' src={isComplete ? tick : untick} alt="" />
         <p className={`text-slate-700 ml-4 text-[25px] ${isComplete ? "line-through" : ""}`}>{text}</p>
       </div>
-      <img onClick={()=> deleteTodo(id)} src={delete_icon} alt="delete" className='w-5.5 hover:bg-red-600 cursor-pointer' />
+      <img onClick={()=> deleteTodo(id)} src={delete_icon} alt="delete" className='w-5.5 cursor-pointer' />
     </div>
   )
 }
