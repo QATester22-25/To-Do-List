@@ -16,5 +16,5 @@ test("toggles todo completion", async () => {
 
   await userEvent.click(todo);
 
-  expect(todo).toHaveClass("line-through");
+  expect(todo).toHaveClass("underline");
 });

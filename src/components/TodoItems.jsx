@@ -11,7 +11,6 @@ const TodoItems = ({ text,id,isComplete,deleteTodo,toggle}) => {
         <p className={`text-slate-700 ml-4 text-[25px] ${isComplete ? 'text-red-700 font-bold underline' : ''}`}>{text}</p>
       </div>
       <img onClick={() => deleteTodo(id)} src={delete_icon} alt="delete" className='w-5.5 cursor-pointer' />
-      
     </div>
   )
 }
