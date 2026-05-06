@@ -113,12 +113,12 @@ const Todo = () => {
           </p>
         ) : (
           <>
-            <p className="text-center mt-3 text-orange-500 font-medium text-xl">
-               ⏳ {remaining > 0 ? `You have ${remaining} task${remaining !== 1 ? "s" : ""} to do` : ''}
+            <p className="text-center mt-10 text-orange-500 font-medium text-xl">
+                {remaining > 0 ? `⏳ You have ${remaining} task${remaining !== 1 ? "s" : ""} to do` : ''}
             </p>
 
             <p className="text-center mt-5 text-green-600 font-medium text-lg">
-             ✔️ {completed > 0 ? `${completed} task${completed !== 1 ? "s" : ""} done` : ``}
+              {completed > 0 ? ` ✔️ ${completed} task${completed !== 1 ? "s" : ""} done` : ``}
             </p>
           </>
         )}
