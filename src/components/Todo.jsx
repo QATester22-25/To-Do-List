@@ -60,11 +60,6 @@ const Todo = () => {
   const completed = total - remaining;
   const progress = total === 0 ? 0 : Math.round((completed / total) * 100);
 
-  let message = "";
-  let colorClass = "";
-
- 
-
   return (
     <div className="bg-white place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-137.5 rounded-xl">
       {/* ----------title------------ */}
