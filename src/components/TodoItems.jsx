@@ -5,7 +5,7 @@ import delete_icon from '../assets/delete.png'
 
 const TodoItems = ({ text,id,isComplete,deleteTodo,toggle}) => {
   return (
-    <div className='flex items-center my-3 gap-2'>
+    <div className='flex items-center my-1 gap-2 h-auto'>
       <div  className='flex flex-1 items-center cursor-pointer'>
         <img onClick={()=>{toggle(id)}} className='w-7' src={isComplete ? tick : untick} alt="" />
         <p onClick={()=>{toggle(id)}} className={`text-slate-700 ml-4 text-[25px] ${isComplete ? 'font-bold underline' : ''}`}>{text}</p>
