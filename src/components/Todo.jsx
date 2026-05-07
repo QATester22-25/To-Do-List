@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import to_do_list from "../../public/to_do_list.png";
 import move from "../assets/moving.png"
+import no_task from "../assets/no_tasks.avif"
+import all_done from "../assets/all_done.webp"
 import TodoItems from "./TodoItems";
 
 const Todo = () => {
@@ -109,17 +111,22 @@ const Todo = () => {
       </div>
       {
         total === 0 ? (
-          <p className="text-center mt-3 text-gray-500 font-medium text-xl">
-            No tasks found
-          </p>
+          <div>
+            <p className="text-center mt-3 text-gray-500 font-medium text-xl">
+              No tasks found
+            </p>
+            <img src={no_task} alt="no_task" />
+          </div>
         ) : (
           <>
             <p className="text-center mt-10  text-orange-500 font-medium text-xl">
                 {remaining > 0 ? `⏳ You have ${remaining} task${remaining !== 1 ? "s" : ""} to do` : ''}
             </p>
 
-            <p className="text-center mt-5 text-green-600 font-medium text-lg">
-                {completed > 0 && remaining ? `${completed} task${completed !== 1 ? "s" : ""} done` : !remaining ? `All tasks are done ✔️` :<div className="flex justify-center"><img src={move} className="w-5.5" alt="move_icon"/><span className="text-center mt-3 ml-2 text-blue-700 font-medium text-xl">Keep pushing forward!</span></div>}
+            <p className="text-center mt-2 text-green-600 font-medium text-lg">
+                {completed > 0 && remaining ? `${completed} task${completed !== 1 ? "s" : ""} done` : !remaining ? <div>
+                  <p>All tasks are done ✔️</p><img src={all_done} className="w-50 mx-auto" alt="all_done"/>
+                </div> : !completed && remaining >= 3 ? <div className="flex justify-center"><span className="text-center  mr-2 text-blue-700 font-medium text-xl">Keep pushing forward!</span><img src={move} className="w-5" alt="move_icon"/></div>:  ''}
             </p>
           </>
         )}
