@@ -125,7 +125,7 @@ const Todo = () => {
 
             <p className="text-center mt-2 text-green-600 font-medium text-lg">
                 {completed > 0 && remaining ? `${completed} task${completed !== 1 ? "s" : ""} done` : !remaining ? <div>
-                  <p>All tasks are done ✔️</p><img src={all_done} className="w-50 mx-auto" alt="all_done"/>
+                  <p className="mt-0">All tasks are done ✔️</p><img src={all_done} className="w-30 mx-auto" alt="all_done"/>
                 </div> : !completed && remaining >= 3 ? <div className="flex justify-center"><span className="text-center  mr-2 text-blue-700 font-medium text-xl">Keep pushing forward!</span><img src={move} className="w-5" alt="move_icon"/></div>:  ''}
             </p>
           </>
