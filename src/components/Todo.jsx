@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import to_do_list from "../../public/to_do_list.png";
+import move from "../assets/moving.png"
 import TodoItems from "./TodoItems";
 
 const Todo = () => {
@@ -113,12 +114,12 @@ const Todo = () => {
           </p>
         ) : (
           <>
-            <p className="text-center mt-10 text-orange-500 font-medium text-xl">
+            <p className="text-center mt-10  text-orange-500 font-medium text-xl">
                 {remaining > 0 ? `⏳ You have ${remaining} task${remaining !== 1 ? "s" : ""} to do` : ''}
             </p>
 
             <p className="text-center mt-5 text-green-600 font-medium text-lg">
-              {completed > 0 ? ` ✔️ ${completed} task${completed !== 1 ? "s" : ""} done` : ``}
+                {completed > 0 && remaining ? `${completed} task${completed !== 1 ? "s" : ""} done` : !remaining ? `All tasks are done ✔️` :<div className="flex justify-center"><img src={move} className="w-5.5" alt="move_icon"/><span className="text-center mt-3 ml-2 text-blue-700 font-medium text-xl">Keep pushing forward!</span></div>}
             </p>
           </>
         )}
