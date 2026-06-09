@@ -73,7 +73,7 @@ const Todo = () => {
   })
 
   return (
-    <div className="bg-white place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-137.5 rounded-xl">
+    <div className="bg-gray-100 place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-137.5 rounded-xl">
       {/* ----------title------------ */}
 
       <div className="flex items-center my-2 gap-2">
@@ -81,7 +81,7 @@ const Todo = () => {
         <h1 className="text-3xl font-semibold">To-Do List</h1>
       </div>
       {/*filter*/}
-      <div className="flex justify-center gap-2 mt-4 text-xl">
+      <div className="flex justify-center gap-2 mt-4 text-lg">
         <button onClick={()=>  setFilter("all")} className="font-bold cursor-pointer text-emerald-800 border hover:bg-emerald-900 hover:text-white px-3 py-1 rounded-xl">All</button>
         <button onClick={()=> setFilter("remaining") } className="font-bold cursor-pointer text-emerald-800 border hover:bg-emerald-900 hover:text-white px-3 py-1 rounded-xl">Remaining</button>
         <button on onClick={ ()=> setFilter("done")} className="font-bold cursor-pointer text-emerald-800  border hover:bg-emerald-900 hover:text-white px-3 py-1 rounded-xl" >Done</button>
@@ -134,14 +134,14 @@ const Todo = () => {
           </div>
         ) : (
           <>
-            <p className="text-center mt-10  text-orange-500 font-medium text-xl">
+            <p className="text-center my-5   text-orange-500 font-medium text-xl">
                 {remaining > 0 ? `⏳ You have ${remaining} task${remaining !== 1 ? "s" : ""} to do` : ''}
             </p>
 
             <p className="text-center mt-2 text-green-600 font-medium text-lg">
                 {completed > 0 && remaining ? `${completed} task${completed !== 1 ? "s" : ""} done` : !remaining ? <div>
                   <p className="mt-0">All tasks are done ✔️</p><img src={all_done} className="w-30 mx-auto" alt="all_done"/>
-                </div> : !completed && remaining >= 3 ? <div className="flex justify-center"><span className="text-center  mr-2 text-blue-700 font-medium text-xl">Keep pushing forward!</span><img src={move} className="w-5" alt="move_icon"/></div>:  ''}
+                </div> : !completed && remaining >= 3 ? <div className="flex justify-center"><span className="text-center  ml-4 text-blue-700 font-medium text-xl">Keep pushing forward</span><img src={move} className="w-10" alt="move_icon"/></div>:  ''}
             </p>
           </>
         )}
