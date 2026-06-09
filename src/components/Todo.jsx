@@ -4,6 +4,7 @@ import move from "../assets/moving.png"
 import no_task from "../assets/no_tasks.avif"
 import all_done from "../assets/all_done.webp"
 import TodoItems from "./TodoItems";
+import { setFiles } from "@testing-library/user-event/dist/cjs/utils/index.js";
 
 const Todo = () => {
   const [todoList, setTodoList] = useState(
@@ -63,6 +64,14 @@ const Todo = () => {
   const completed = total - remaining;
   const progress = total === 0 ? 0 : Math.round((completed / total) * 100);
 
+  const [filter, setFilter] = useState("all");
+
+  const filteredTodos = todoList.filter((task) => {
+    if (filter === "remaining") return !task.isComplete;
+    if (filter === "done") return task.isComplete;
+    return true;
+  })
+
   return (
     <div className="bg-white place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-137.5 rounded-xl">
       {/* ----------title------------ */}
@@ -72,10 +81,10 @@ const Todo = () => {
         <h1 className="text-3xl font-semibold">To-Do List</h1>
       </div>
       {/*filter*/}
-      <div className="flex justify-evenly mt-4 text-xl">
-        <button className="font-bold cursor-pointer text-emerald-800 border hover:bg-emerald-900 hover:text-white px-4 py-2 rounded-xl">All</button>
-        <button className="font-bold cursor-pointer text-emerald-800 border hover:bg-emerald-900 hover:text-white px-4 py-2 rounded-xl">Remaining</button>
-        <button className="font-bold cursor-pointer text-emerald-800 border hover:bg-emerald-900 hover:text-white px-4 py-2 rounded-xl" >Done</button>
+      <div className="flex justify-center gap-2 mt-4 text-xl">
+        <button onClick={()=>  setFilter("all")} className="font-bold cursor-pointer text-emerald-800 border hover:bg-emerald-900 hover:text-white px-3 py-1 rounded-xl">All</button>
+        <button onClick={()=> setFilter("remaining") } className="font-bold cursor-pointer text-emerald-800 border hover:bg-emerald-900 hover:text-white px-3 py-1 rounded-xl">Remaining</button>
+        <button on onClick={ ()=> setFilter("done")} className="font-bold cursor-pointer text-emerald-800  border hover:bg-emerald-900 hover:text-white px-3 py-1 rounded-xl" >Done</button>
       </div>
 
       {/* ----------input box------------ */}
@@ -102,7 +111,7 @@ const Todo = () => {
       {/* ----------to do list----------- */}
 
       <div>
-        {todoList.map((item, index) => {
+        {filteredTodos.map((item, index) => {
           return (
             <TodoItems
               key={index}
